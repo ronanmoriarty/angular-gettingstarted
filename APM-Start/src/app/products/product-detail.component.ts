@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   templateUrl: './product-detail.component.html',
@@ -10,7 +10,7 @@ export class ProductDetailComponent implements OnInit {
   pageTitle: string = "Product Detail";
   product: IProduct;
 
-  constructor(private route: ActivatedRoute) { 
+  constructor(private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -25,7 +25,10 @@ export class ProductDetailComponent implements OnInit {
       "price": 19.95,
       "starRating": 3.2,
       "imageUrl": "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
-    };  
+    };
   }
 
+  onBack(): void {
+    this.router.navigate(['/products']);
+  }
 }
